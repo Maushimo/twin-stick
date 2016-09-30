@@ -62,26 +62,24 @@ class Player {
     }
   }
 
-  void shoot() {
-    if (key == CODED) {
-      if (keyCode == UP) {
+  void shoot() { 
+    if (keysPressed[38]) { //shoot UP
         firing = true;
         direction = 0;
       }
 
-      if (keyCode == DOWN) {
+      if (keysPressed[40]) { //shoot DOWN
         firing = true;
         direction = 1;
       }
-      if (keyCode == LEFT) {
+      if (keysPressed[37]) { //shoot LEFT
         firing = true;
         direction = 2;
       }
-      if (keyCode == RIGHT) {
+      if (keysPressed[39]) { //shoot RIGHT
         firing = true;
         direction = 3;
       }
-    }
   }
 
   void bulletDeath() {
