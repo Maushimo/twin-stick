@@ -22,8 +22,8 @@ class Player {
     rectMode(CENTER);
     fill(255);
     rect(posX, posY, w, h);
-    
-    if (b == null){ //keeps shooting bullets when player stands still, need to fix!!!
+
+    if (b == null) { //keeps shooting bullets when player stands still, need to fix!!!
       b = new Bullet(posX, posY);
     }
 
@@ -42,6 +42,7 @@ class Player {
 
     move();
     shoot();
+    playerBoundary();
   }
 
   void move() {
@@ -64,26 +65,41 @@ class Player {
 
   void shoot() { 
     if (keysPressed[38]) { //shoot UP
-        firing = true;
-        direction = 0;
-      }
+      firing = true;
+      direction = 0;
+    }
 
-      if (keysPressed[40]) { //shoot DOWN
-        firing = true;
-        direction = 1;
-      }
-      if (keysPressed[37]) { //shoot LEFT
-        firing = true;
-        direction = 2;
-      }
-      if (keysPressed[39]) { //shoot RIGHT
-        firing = true;
-        direction = 3;
-      }
+    if (keysPressed[40]) { //shoot DOWN
+      firing = true;
+      direction = 1;
+    }
+    if (keysPressed[37]) { //shoot LEFT
+      firing = true;
+      direction = 2;
+    }
+    if (keysPressed[39]) { //shoot RIGHT
+      firing = true;
+      direction = 3;
+    }
   }
 
   void bulletDeath() {
     b = null;
     firing = false;
+  }
+
+  void playerBoundary() {
+    if (posX <= 0 ) {
+      posX += 10;
+    }
+    if (posX >= width) {
+      posX -= 10;
+    }
+    if (posY <= 0) {
+      posY += 10;
+    }
+    if (posY >= height) {
+      posY -= 10;
+    }
   }
 }
