@@ -3,6 +3,7 @@ class Bullet {
   float h = w;
   float posX;
   float posY;
+  
   float moveSpeed = 5;
   
   Bullet(float originX, float originY) {

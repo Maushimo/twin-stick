@@ -32,7 +32,6 @@ class Player {
         b.draw();
         b.updateDirection(direction);
         if (b.posX <= 0 || b.posX >= width || b.posY <= 0 || b.posY >= height) {
-          firing = false;
           bulletDeath();
         }
       } else {
@@ -42,7 +41,7 @@ class Player {
 
     move();
     shoot();
-    playerBoundary();
+    playerArenaBoundary();
   }
 
   void move() {
@@ -88,7 +87,7 @@ class Player {
     firing = false;
   }
 
-  void playerBoundary() {
+  void playerArenaBoundary() {
     if (posX <= 0 ) {
       posX += 10;
     }

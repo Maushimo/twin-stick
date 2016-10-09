@@ -1,21 +1,30 @@
 Player p;
+Box b;
 
 boolean[] keysPressed = new boolean[256];
 void setup() {
   size(800, 600);
   background(0);
-  
+
   p = new Player(width/2, height/2);
-  
+  b = new Box(200, 300);
+
   frameRate(60);
 }
 
-void draw(){
+void draw() {
   background(0);
+  b.draw();
   p.draw();
+  
+  if(p.b != null){
+    if(b.isCollide(p.b.posX, p.b.posY)){
+      println("COLLIDE");
+    }
+  }
 }
 
-void keyPressed(){
+void keyPressed() {
   println(keyCode);
   keysPressed[keyCode] = true;
 }
