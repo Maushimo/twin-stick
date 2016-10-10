@@ -1,11 +1,10 @@
 class Bullet extends Entity{
-  float radius;
   float moveSpeed = 5;
   Bullet(float originX, float originY) {
     super(originX, originY, 10, 10);
     this.radius = w;
   }
-
+  
   void updateDirection(int direction) {
     if(direction == 0){ //0 = up arrow
       posY -= moveSpeed;

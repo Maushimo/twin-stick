@@ -1,6 +1,5 @@
 class Player extends Entity{
   float moveSpeed = 5;
-  float radius;
   int direction; //player weapon direction given a value so bullet can update accordingly
   
   Bullet b;

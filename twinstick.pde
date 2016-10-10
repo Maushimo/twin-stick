@@ -18,7 +18,7 @@ void draw() {
   p.draw();
 
   if (p.b != null) {
-    if (b.isCollide(p.b.posX, p.b.posY, p.b.radius)) {
+    if (b.isCollide(p.b)) {
       p.b = null;
     }
   }

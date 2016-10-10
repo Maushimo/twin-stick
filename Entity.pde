@@ -1,6 +1,7 @@
 class Entity{
   float posX, posY;
   float w, h;
+  float radius;
   
   Entity(float posX, float posY, float w, float h){
     this.posX = posX;
@@ -9,8 +10,8 @@ class Entity{
     this.h = h;
   }
   
-  boolean isCollide(float x, float y, float size){
-    if (dist(posX, posY, x, y) < w + size) {
+  boolean isCollide(Entity e){
+    if (dist(this.posX, this.posY, e.posX, e.posY) < (e.radius + this.radius)) {
       return true;
     } else {
       return false;
