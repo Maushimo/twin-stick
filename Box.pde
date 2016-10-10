@@ -11,12 +11,4 @@ class Box extends Entity{ //GENERIC BOX FOR TESTING
     fill(255, 0, 0);
     rect(posX, posY, w, h);
   }
-
-  boolean isCollide(float incomingX, float incomingY, float incomingRadius) {
-    if (dist(posX, posY, incomingX, incomingY) < radius + incomingRadius) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }

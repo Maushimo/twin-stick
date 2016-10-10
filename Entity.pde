@@ -8,4 +8,12 @@ class Entity{
     this.w = w;
     this.h = h;
   }
+  
+  boolean isCollide(float x, float y, float size){
+    if (dist(posX, posY, x, y) < w + size) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
