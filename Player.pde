@@ -7,7 +7,7 @@ class Player extends Entity{
     super(originX, originY, 25, 25);
     this.radius = sqrt(pow((w/2), 2) + pow((w/2), 2));
   }
-
+  @Override
   void draw() {
     rectMode(CENTER);
     fill(255);

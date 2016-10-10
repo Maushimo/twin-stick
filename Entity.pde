@@ -1,4 +1,5 @@
 class Entity{
+  int id = 0;
   float posX, posY;
   float w, h;
   float radius;
@@ -8,6 +9,10 @@ class Entity{
     this.posY = posY;
     this.w = w;
     this.h = h;
+  }
+  
+  void draw(){
+    
   }
   
   //takes an entity and compares it to this one
