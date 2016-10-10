@@ -12,8 +12,16 @@ class Entity{
   
   //takes an entity and compares it to this one
   boolean isCollide(Entity e){
-    println(dist(this.posX, this.posY, e.posX, e.posY));
     if (dist(this.posX, this.posY, e.posX, e.posY) < (e.radius + this.radius)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  //takes specific stuf and detects collision
+  boolean isCollide(float x, float y, float size){
+    if (dist(this.posX, this.posY, x, y) < (size + this.radius)) {
       return true;
     } else {
       return false;
