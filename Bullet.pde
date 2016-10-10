@@ -4,6 +4,8 @@ class Bullet {
   float posX;
   float posY;
   
+  float radius = w;
+  
   float moveSpeed = 5;
   
   Bullet(float originX, float originY) {

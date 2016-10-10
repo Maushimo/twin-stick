@@ -16,10 +16,10 @@ void draw() {
   background(0);
   b.draw();
   p.draw();
-  
-  if(p.b != null){
-    if(b.isCollide(p.b.posX, p.b.posY)){
-      println("COLLIDE");
+
+  if (p.b != null) {
+    if (b.isCollide(p.b.posX, p.b.posY, p.b.radius)) {
+      p.b = null;
     }
   }
 }

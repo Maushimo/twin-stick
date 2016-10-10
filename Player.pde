@@ -3,7 +3,8 @@ class Player {
   float h = w;
   float posX;
   float posY;
-  float moveSpeed = 10;
+  float moveSpeed = 5;
+  float radius = sqrt(pow((w/2), 2) + pow((w/2), 2));
 
   int direction; //player weapon direction given a value so bullet can update accordingly
 
@@ -14,8 +15,6 @@ class Player {
   Player(float x, float y) {
     posX = x;
     posY = y;
-
-    b = new Bullet(posX, posY);
   }
 
   void draw() {
@@ -23,82 +22,89 @@ class Player {
     fill(255);
     rect(posX, posY, w, h);
 
-    if (b == null) { //keeps shooting bullets when player stands still, need to fix!!!
-      b = new Bullet(posX, posY);
-    }
-
     if (b != null) {
-      if (firing) {
-        b.draw();
-        b.updateDirection(direction);
-        if (b.posX <= 0 || b.posX >= width || b.posY <= 0 || b.posY >= height) {
-          bulletDeath();
-        }
-      } else {
-        b.updatePosition(posX, posY);
+      b.draw();
+      b.updateDirection(direction);
+      if (b.posX <= 0 || b.posX >= width || b.posY <= 0 || b.posY >= height) {
+        bulletDeath();
       }
+    } else {
+      shoot();
     }
 
-    move();
-    shoot();
-    playerArenaBoundary();
-  }
+  move();
+  playerArenaBoundary();
+}
 
-  void move() {
-    //movement based on will's pongrace game
-    if (!firing) {
-      if (keysPressed[87]) { //'w' (UP)
-        posY -= moveSpeed;
-      }
-      if (keysPressed[68]) { //'d' (RIGHT)
-        posX += moveSpeed;
-      }
-      if (keysPressed[65]) { //'a' (LEFT)
-        posX -= moveSpeed;
-      }
-      if (keysPressed[83]) { //'s' (DOWN)
-        posY += moveSpeed;
-      }
+void move() {
+  //movement based on will's pongrace game
+  if (b == null) {
+    if (keysPressed[87]) { //'w' (UP)
+      posY -= moveSpeed;
     }
-  }
-
-  void shoot() { 
+    if (keysPressed[68]) { //'d' (RIGHT)
+      posX += moveSpeed;
+    }
+    if (keysPressed[65]) { //'a' (LEFT)
+      posX -= moveSpeed;
+    }
+    if (keysPressed[83]) { //'s' (DOWN)
+      posY += moveSpeed;
+    }
+  } else {
     if (keysPressed[38]) { //shoot UP
-      firing = true;
-      direction = 0;
-    }
-
-    if (keysPressed[40]) { //shoot DOWN
-      firing = true;
-      direction = 1;
-    }
-    if (keysPressed[37]) { //shoot LEFT
-      firing = true;
-      direction = 2;
-    }
-    if (keysPressed[39]) { //shoot RIGHT
-      firing = true;
-      direction = 3;
-    }
+    direction = 0;
   }
 
-  void bulletDeath() {
-    b = null;
-    firing = false;
+  if (keysPressed[40]) { //shoot DOWN
+    direction = 1;
+  }
+  if (keysPressed[37]) { //shoot LEFT
+    direction = 2;
+  }
+  if (keysPressed[39]) { //shoot RIGHT
+    direction = 3;
+  }
+  }
+}
+
+void shoot() { 
+  if (keysPressed[38]) { //shoot UP
+    b = new Bullet(posX, posY);
+    direction = 0;
   }
 
-  void playerArenaBoundary() {
-    if (posX <= 0 ) {
-      posX += 10;
-    }
-    if (posX >= width) {
-      posX -= 10;
-    }
-    if (posY <= 0) {
-      posY += 10;
-    }
-    if (posY >= height) {
-      posY -= 10;
-    }
+  if (keysPressed[40]) { //shoot DOWN
+    b = new Bullet(posX, posY);
+    direction = 1;
   }
+  if (keysPressed[37]) { //shoot LEFT
+    b = new Bullet(posX, posY);
+    direction = 2;
+  }
+  if (keysPressed[39]) { //shoot RIGHT
+    b = new Bullet(posX, posY);
+    direction = 3;
+  }
+}
+
+void bulletDeath() {
+  b = null;
+  firing = false;
+}
+
+void playerArenaBoundary() {
+  if (posX <= 0 ) {
+    posX += 10;
+  }
+  if (posX >= width) {
+    posX -= 10;
+  }
+  if (posY <= 0) {
+    posY += 10;
+  }
+  if (posY >= height) {
+    posY -= 10;
+  }
+}
 }
