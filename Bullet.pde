@@ -1,21 +1,9 @@
-class Bullet {
-  float w = 10;
-  float h = w;
-  float posX;
-  float posY;
-  
-  float radius = w;
-  
+class Bullet extends Entity{
+  float radius;
   float moveSpeed = 5;
-  
   Bullet(float originX, float originY) {
-    posX = originX;
-    posY = originY;
-  }
-  
-  void updatePosition(float originX, float originY){
-    posX = originX;
-    posY = originY;
+    super(originX, originY, 10, 10);
+    this.radius = w;
   }
 
   void updateDirection(int direction) {

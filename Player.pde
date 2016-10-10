@@ -1,20 +1,12 @@
-class Player {
-  float w = 25;
-  float h = w;
-  float posX;
-  float posY;
+class Player extends Entity{
   float moveSpeed = 5;
-  float radius = sqrt(pow((w/2), 2) + pow((w/2), 2));
-
+  float radius;
   int direction; //player weapon direction given a value so bullet can update accordingly
-
-  boolean firing = false; //checks when a bullet is being fired and should STOP bullets being created
-
+  
   Bullet b;
-
-  Player(float x, float y) {
-    posX = x;
-    posY = y;
+  Player(float originX, float originY) {
+    super(originX, originY, 25, 25);
+    this.radius = sqrt(pow((w/2), 2) + pow((w/2), 2));
   }
 
   void draw() {
@@ -90,7 +82,6 @@ void shoot() {
 
 void bulletDeath() {
   b = null;
-  firing = false;
 }
 
 void playerArenaBoundary() {
