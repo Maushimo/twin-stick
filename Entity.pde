@@ -10,7 +10,9 @@ class Entity{
     this.h = h;
   }
   
+  //takes an entity and compares it to this one
   boolean isCollide(Entity e){
+    println(dist(this.posX, this.posY, e.posX, e.posY));
     if (dist(this.posX, this.posY, e.posX, e.posY) < (e.radius + this.radius)) {
       return true;
     } else {

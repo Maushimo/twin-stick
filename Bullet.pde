@@ -2,7 +2,8 @@ class Bullet extends Entity{
   float moveSpeed = 5;
   Bullet(float originX, float originY) {
     super(originX, originY, 10, 10);
-    this.radius = w;
+    //radius is the W because it's a circle
+    this.radius = (w/2);
   }
   
   void updateDirection(int direction) {
