@@ -49,6 +49,13 @@ void draw() {
     }
   }
   */
+  
+  if(player.bullet != null){
+    if(box001.isCollide(player.bullet)){
+      player.bullet = null;
+    }
+  }
+  
 }
 
 void keyPressed() {

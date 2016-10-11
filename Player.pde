@@ -2,7 +2,7 @@ class Player extends Entity{
   float moveSpeed = 5;
   int direction; //player weapon direction given a value so bullet can update accordingly
   
-  Bullet b;
+  Bullet bullet;
   Player(float originX, float originY) {
     super(originX, originY, 25, 25);
     this.radius = sqrt(pow((w/2), 2) + pow((w/2), 2));
@@ -13,10 +13,10 @@ class Player extends Entity{
     fill(255);
     rect(posX, posY, w, h);
 
-    if (b != null) {
-      b.draw();
-      b.updateDirection(direction);
-      if (b.posX <= 0 || b.posX >= width || b.posY <= 0 || b.posY >= height) {
+    if (bullet != null) {
+      bullet.draw();
+      bullet.updateDirection(direction);
+      if (bullet.posX <= 0 || bullet.posX >= width || bullet.posY <= 0 || bullet.posY >= height) {
         bulletDeath();
       }
     } else {
@@ -29,7 +29,7 @@ class Player extends Entity{
 
 void move() {
   //movement based on will's pongRace game
-  if (b == null) {
+  if (bullet == null) {
     if (keysPressed[87]) { //'w' (UP)
       posY -= moveSpeed;
     }
@@ -61,26 +61,26 @@ void move() {
 
 void shoot() { 
   if (keysPressed[38]) { //shoot UP
-    b = new Bullet(posX, posY);
+    bullet = new Bullet(posX, posY);
     direction = 0;
   }
 
   if (keysPressed[40]) { //shoot DOWN
-    b = new Bullet(posX, posY);
+    bullet = new Bullet(posX, posY);
     direction = 1;
   }
   if (keysPressed[37]) { //shoot LEFT
-    b = new Bullet(posX, posY);
+    bullet = new Bullet(posX, posY);
     direction = 2;
   }
   if (keysPressed[39]) { //shoot RIGHT
-    b = new Bullet(posX, posY);
+    bullet = new Bullet(posX, posY);
     direction = 3;
   }
 }
 
 void bulletDeath() {
-  b = null;
+  bullet = null;
 }
 
 void playerArenaBoundary() {
