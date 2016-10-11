@@ -28,7 +28,7 @@ class Player extends Entity{
 }
 
 void move() {
-  //movement based on will's pongrace game
+  //movement based on will's pongRace game
   if (b == null) {
     if (keysPressed[87]) { //'w' (UP)
       posY -= moveSpeed;
@@ -84,17 +84,17 @@ void bulletDeath() {
 }
 
 void playerArenaBoundary() {
-  if (posX <= 0 ) {
-    posX += 10;
+  if (posX - w/2 <= 0 ) {
+    posX += moveSpeed;
   }
-  if (posX >= width) {
-    posX -= 10;
+  if (posX + w/2>= width) {
+    posX -= moveSpeed;
   }
-  if (posY <= 0) {
-    posY += 10;
+  if (posY - h/2 <= 0) {
+    posY += moveSpeed;
   }
-  if (posY >= height) {
-    posY -= 10;
+  if (posY + h/2 >= height) {
+    posY -= moveSpeed;
   }
 }
 }

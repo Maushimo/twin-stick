@@ -24,7 +24,7 @@ class Entity{
     }
   }
   
-  //takes specific stuf and detects collision
+  //takes specific stuff and detects collision
   boolean isCollide(float x, float y, float size){
     if (dist(this.posX, this.posY, x, y) < (size + this.radius)) {
       return true;
